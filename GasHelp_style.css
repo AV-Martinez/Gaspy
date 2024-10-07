@@ -1,0 +1,26 @@
+body {
+	font-family: Verdana, sans-serif;
+}
+td { 
+	padding: 5px;
+	vertical-align: top;
+}
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid;
+}	
+ul, ol {
+	padding: 15px 15px 15px 30px;
+}
+h1, h2, h3 {
+	color: rgb(53, 44, 184);
+}
+h1 ~ *:not(h1) {
+	margin-left: 1.2rem;
+}
+h2 ~ *:not(h1, h2) {
+	margin-left: 2.4rem;
+}
+h3 ~ *:not(h1, h2, h3) {
+	margin-left: 3.6rem;
+}	

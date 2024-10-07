@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="GasHelp_style.css">
+</head>
+<body>
+
+<center>
+<h1>Gaspy</h1>
+<h2>Un buscador de gasolineras</h2>
+</center>
+
+<h2>Introducción</h2>
+
+<p>Esta aplicación escrita en Python analiza los precios de las gasolineras situadas alrededor de una ubicación o a lo largo de una ruta. Emplea datos públicos sobre la situación y precios de las gasolineras para calcular el coste total de un repostaje basándose en la distancia a la gasolinera, los precios actuales, el perfil de consumo del vehículo y cualquier descuento que estuviera disponible.</p>
+
+<p>Elementos fundamentales:</p>
+<ul>
+	<li><b>Fuente de precios</b>: Es la fuente para los datos que contienen las características de las gasolineras, y entre los que se incluyen al menos su localización y los precios de los combustibles.</li>
+	<li><b>Tipo de combustible</b>: Cada fuente de precios contiene sus tipos específicos de combustibles. A pesar de que los combustibles son básicamente iguales en todo el mundo, el nombre por el que se les conoce difiere entre países. </li>
+	<li><b>Referencia</b>: O bien una <b>Ubicación</b> (que se especfica mediante su latitud y lngitud) o bien un fichero GPX que contiene una <b>Ruta</b>. La búsqueda de las gasolineras se realizará alrededor de la ubicación o a lo largo de la ruta.</li>
+	<li><b>Perfil de Vehículo</b>: Especifica un perfil de consumo para un vehículo determinado: Tamaño del depósito (en litros), consumo (en litros por 100 Km) y tipo de combustible (según esté disponible en la fuente de precios).</li>
+	<li><b>Descuento</b>: Especifica un porcentaje de reducción de precio que puede estar disponible para determinadas marcas. El descuento se aplicará en las gasolineras cuyo nombre coincida con el del descuento.</li>
+</ul>
+
+<h2>Funcionamiento</h2>
+
+<p>Todo el manejo del programa se realiza desde su ventana principal. Antes de realizar una búsqueda, se debe especificar:</p>
+
+<ul>
+	<li>La referencia: O bien una ubicación del desplegable, o bien una ruta seleccionando un fichero GPX.</li>
+	<li>La distancia máxima a la referencia: Para una ubicación, define el círculo máximo para la búsqueda de gasolineras. En el caso de una ruta, define la máxima distancia a la traza de la ruta.</li>
+	<li>El perfil del vehículo entre las opciones del desplegable.</li>
+	<li>Si se desea descargar nuevos datos de precios o usar los existentes. <b>Nota</b>: Independientemente de esta elección, si los datos disponibles son más antiguos que el límite especificado en "Ajustes", se descargarán nuevos datos.</li>
+	<li>Las marcas que se desea mostrar, separadas por espacios en blanco. Si se desean mostrar todas las marcas, basta dejar el campo en blanco.</li>
+</ul>
+
+<p>Tras pulsar en "Buscar", el programa explorará las gasolineras disponibles en torno a la ubicación o a lo largo de la ruta, filtrando las que no cumplan las condiciones. La tabla de resultados se puede clasificar por cualquier columna pulsando en la cabecera correspondiente.</p>
+
+<p>Los datos muestran:</p>
+
+<ul>
+	<li>La distancia a la referencia. En el caso de que se trate de una ruta, también se muestra el punto kilométrico de la ruta.</li>
+	<li>El coste total del repostaje, teniendo en consideración el tipo de combustible del perfil del vehículo, la capacidad del depósito, y el consumo realizado para ir y volver a la referencia, además de cualquier descuento disponible.</li>
+	<li>La marca de la gasolinera.</li>
+	<li>La fecha y hora en la que los precios entraron en vigor.</li>
+	<li>El precio usado, que será el del tipo de combistible del perfil del vehículo. Si se aplica algún descuento, el precio original aparecerá a continuación del usado.</li>
+	<li>La dirección.</li>
+</ul>
+
+<p>Pulsando el botón derecho del ratón sobre cualquiera de las líneas de resultado se accede a un menú con estas opciones:
+</p>
+
+<ul>
+	<li>Desglose del coste: Permite entender el impacto que supone el desplazamiento extra sobre el total del coste del repostaje.</li>
+	<li>Mostrar en el mapa: Abrirá un mapa de Google Maps en el navegador por defecto centrado en la gasolinera.</li>
+	<li>Indicaciones: Cuando la referencia es en torno a un punto, esta opción abrirá una ruta de Google Maps para llegar a la gasolinera.</li>
+</ul>
+
+<p><b>Nota sobre las distancias</b>: La distancia mostrada es una aproximación calculada a partir de la distancia en línea reacta entre la gasolinera y la referencia e incrementada en el porcentaje especificado en "Ajustes". La distancia final real dependará de la ruta escogida. Se puede ajustar el porcentaje correctivo especificado en "Ajustes" después de comprobar algunas de las rutas ofrecidas por la opción de "Indicaciones...".</p>
+
+<p>La aplicación guarda la máxima distancia a la referencia para cada tipo de referencia. Se puede editar el valor mostrado en cualquier momento. De forma parecida, cualquier marca que se especifique en el correspondiente campo será guardada.</p>
+
+<p>Los ficheros GPX se pueden generar a partir de rutas creadas en Google Maps mediante <a href="http://www.mapstogpx.com">http://www.mapstogpx.com</a>. El botón "Info..." mostrará los puntos inicial, final e intermedios que estén almacenados en el fichero.</p>
+
+<h2>Ajustes</h2>
+
+<p>El diálogo de "Ajustes" permite especificar las Ubicaciones, Perfiles de Vehículos y Descuentos que estarán disponibles. Al pulsar el botón derecho del ratón dentro del contenido de cada pestaña aparecerá un menú contextual desde el que se pueden crear, editar o borrar los correspondientes elementos.</p>
+
+<p>Además, se puede especificar:</p>
+
+<ul>
+	<li>El lenguage a emplear. Si se modifica, habrá que reiniciar el programa.</li>
+	<li>La fuente de precios a usar. <b>Nota</b>: El tipo de combustible especificado en algún Perfil de Vehículo puede quedar invalidado si no se ajusta a los admitidos en la nueva fuente. Un aviso alertará de tal circunstancia. Es necesario modificar los Perfiles que estén impactados antes de abandonar el diálogo de "Ajustes". También se puede analizar la fuente seleccionada para visualizar la disponibilidad de los distintos tipos de combustibles y sus rangos de precios.</li>
+	<li>El número máximo de horas durante el cual se considera válido un fichero de precios descargado. Una vez finalizado este período, aunque se seleccione el uso de los datos existentes desde el diálogo principal, se descargarán nuevos datos.</li>
+	<li>El porcentaje en el que se incrementa el cálculo de la distancia en línea recta para proporcionar una aproximación a lo que sería una distancia en un ruta por carretera. Ver "Nota sobre las distancias" más arriba.</li>
+</ul>
+
+<h2>Licencia</h2>
+
+<p>(c) 2024 avmn. Usa este software como quieras, pero comparte una nueva versión si lo has mejorado. Licencia GNU General Public License.</p>
+
+</body>
+</html>

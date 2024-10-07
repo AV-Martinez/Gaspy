@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="GasHelp_style.css">
+</head>
+<body>
+
+<center>
+<h1>Gaspy</h1>
+<h2>A gas station finder</h2>
+</center>
+
+<h2>Introduction</h2>
+
+<p>This Python application analyzes the prices of gas stations around a location or along a route. It will use public data about gas stations locations and prices to calculate the total cost of a refill based on the distance to the station, its current prices, the vehicle's consumption profile and any discounts available.</p>
+
+<p>Things to know:</p>
+<ul>
+	<li><b>Prices source</b>: This is the source for the data containing the characteristics of the gas stations, including at least its location and fuel prices.</li>
+	<li><b>Fuel type</b>: Each price source refers to each fuel type in a specific way. While the fuels are basically the same across the globe, the name by which they are known differs by country.</li>
+	<li><b>Reference</b>: Either a <b>Location</b> (specified as a latitude and a longitude) or a GPX file holding a <b>Route</b>. The search of gast stations will be performed around a location or along a route.</li>
+	<li><b>Vehicle profile</b>: Specifies a consumption profile for a given vehicle:t Tank size (in litres), consumption (in litres per 100 Km) and fuel type (as available in the prices sources).</li>
+	<li><b>Discount</b>: Specifies a price reduction percentage for a given fuel type. The discount will be applied to those gas stations which name contains the discount name.</li>
+</ul>
+
+<h2>Operation</h2>
+
+<p>All operation happens from the main screen. Before performing a search, you must specify:</p>
+
+<ul>
+	<li>The reference: Either a location from the dropdown list or a route, by choosing a GPX file.</li>
+	<li>The maximum distance to the reference: For a location reference, it will define a maximum circle to search for stations. For a route reference, it will define the maximum distance to the route track.</li>
+	<li>The vehicle's profile from the available options in the dropdown list.</li>
+	<li>Either to download fresh prices data or use the available ones. <b>Note</b>: Regardless of this choice, if the existing data is older than the number of hours specified in "Setup", fresh data will be downloaded.</li>
+	<li>The brands you want to show separated by a blank space. If you prefer to show all brands available, leave the field blank.</li>
+</ul>
+
+<p>After clicking on "Search", the program will explore the available gas stations around the location or along teh route, filtering out those not fulfilling the conditions. The results table can be sorted on any column by clicking on the corresponding header.</p>
+
+<p>The data shown provides:</p>
+
+<ul>
+	<li>Distance to the reference. In case of a route reference, the point in the route in which the station is located is also shown.</li>
+	<li>Total cost of refill, considering the vehicle fuel specified in the profile, its tank capacity and the consumption incurred to and from the reference, plus any discount available.</li>
+	<li>The brand of the station.</li>
+	<li>The date in which the prices used where valid.</li>
+	<li>The price used, which will match the fuel type in the vehicle's profile. Note that, if a discount is applied, the original price will appear next to the applied one.</li>
+	<li>The address.</li>
+</ul>
+
+<p>Clicking right on any of the result lines, a popup menu will show these options:</p>
+
+<ul>
+	<li>Cost breakdown: Allows to understand the impact on the total refill cost of the need to cover the distance to the gas station.</li>
+	<li>Show on map: Will open a Google Maps map on the default browser centered at the gas station.</li>
+	<li>Directions: When the reference is around a location, this option will open a Google Maps route to reach the gas station.</li>
+</ul>
+
+<p><b>Note on distances</b>: The distance shown is an approximation based on the straight line distance between the gas station and the reference increased by a percentage as specified in "Setup". The final real distance will depend on the chosen route. You may want to fine tune the corrective percentage specified in "Setup" after checking some of the routes offered by the "Directions..." option.</p>
+
+<p>The application saves the maximum distance to the reference used for each reference. You may edit the value offered at any time. Similarly, any brand name specified for filtering will be saved.</p>
+
+<p>GPX files can be generated from Google Maps routes in <a href="http://www.mapstogpx.com">http://www.mapstogpx.com</a>. The "Info..." button will show the waypoints stored in the GPX file.</p>
+
+<h2>Setup</h2>
+
+<p>The "Setup" dialog allows to specify the Locations, Vehicle Profiles and Discounts that will be available. Click right on the corresponding tab content for a context menu from which you can create, edit or delete the corresponding items.</p>
+
+<p>Additionally, you can specify:</p>
+
+<ul>
+	<li>The language to use. If changed, a restart will be needed.</li>
+	<li>The prices source to use. <b>Note</b>: The fuel type of the existing Vehicle Profiles may become invalid if it is not supported in the chosen source. A warning will alert of such circumstance. You must edit the impacted Profiles or revert to the previous source before leaving the dialog. You can also check the fuel type availability and the price ranges in the chosen source.</li>
+	<li>The maximum number of hours in which a downloaded prices file is considered valid. After this period of time, even requesting to use existing data from the main dialog will force a fresh data download.</li>
+	<li>The percentage to increase the straight line distance as to provide an approximate road route distance. See "Note on distances" above.</li>
+</ul>
+
+<h2>License</h2>
+
+<p>(c) 2024 avmn. Use this software as you like, but please share a new version if improved. Licensed under the GNU General Public License.</p>
+
+</body>
+</html>
