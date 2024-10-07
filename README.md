@@ -10,4 +10,9 @@ It will use public data about gas stations locations and prices to calculate the
 * The vehicle's consumption profile
 * Any discounts available.
 
+Download all the files to a proper folder and execute:
+```
+python Gas.py
+```
+
 Licensed under the GNU General Public License.
