@@ -14,5 +14,6 @@ Download all the files to a proper folder and execute:
 ```
 python Gas.py
 ```
+The default language is Spanish, you can change it to English in the Fichero > Ajustes section.
 
 Licensed under the GNU General Public License.
